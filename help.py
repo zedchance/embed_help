@@ -15,7 +15,6 @@ class Help(commands.Cog):
 
     @commands.command(name='help',
         description='Help command',
-        aliases=['-h'],
         case_insensitive=True)
     async def help_command(self, ctx, *commands : str):
         """ Shows this message """
