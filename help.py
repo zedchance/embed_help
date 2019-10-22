@@ -4,7 +4,8 @@
 import discord
 from discord.ext import commands
 
-from descriptions import bot_title, bot_description
+bot_title = 'Bot title'
+bot_description = 'Bot description'
 
 class Help(commands.Cog):
     """ Help commands """
