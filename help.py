@@ -4,6 +4,7 @@
 import discord
 from discord.ext import commands
 
+prefix = '!'
 bot_title = 'Bot title'
 bot_description = ''
 bottom_info = ''
@@ -27,7 +28,7 @@ class Help(commands.Cog):
         
         def generate_usage(command_name):
             """ Generates a string of how to use a command """
-            temp = f'!b '
+            temp = f'{prefix}'
             command = bot.get_command(command_name)
             # Aliases
             if len(command.aliases) == 0:
