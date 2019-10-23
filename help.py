@@ -6,7 +6,7 @@ from discord.ext import commands
 
 bot_title = ''
 bot_description = ''
-footer = 'Use `!blue help [command]` or `!blue help [category]` for more information'
+footer = ''
 
 class Help(commands.Cog):
     """ Help commands """
