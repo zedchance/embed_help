@@ -44,7 +44,7 @@ async def on_ready():
 
 ## Screenshots
 
-Here are some examples of what the help messages look like before and after.
+Here are some examples of what the help messages look like before and after using [!blue](https://github.com/zedchance/blues_bot.py) bot.
 
 The default help message before:  
 ![before3](screenshots/before3.png)
