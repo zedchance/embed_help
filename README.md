@@ -59,20 +59,8 @@ help command (useful instead of a footer because you can add markdown formatting
 
 Here are some examples of what the help messages look like before and after using [!blue](https://github.com/zedchance/blues_bot.py) bot.
 
-The default help message before:  
-![before3](screenshots/before3.png)
-
-Default help message after:  
-![after3](screenshots/after3.png)
-
-The help message on a category before:  
-![before2](screenshots/before2.png)
-
-And after:  
-![after2](screenshots/after2.png)
-
-The help command on a command before:  
-![before1](screenshots/before1.png)
-
-And after:  
-![after1](screenshots/after1.png)
+Before | After
+--- | ---
+![before3](screenshots/before3.png) | ![after3](screenshots/after3.png)
+![before2](screenshots/before2.png) | ![after2](screenshots/after2.png)
+![before1](screenshots/before1.png) | ![after1](screenshots/after1.png)
