@@ -50,12 +50,16 @@ class Help(commands.Cog):
             for cog in bot.cogs:
                 temp = ""
                 for command in bot.get_cog(cog).get_commands():
-                    if command.help is not None:
+                    if command.hidden == True:
+                        print(command)
+                        temp += ''
+                    elif command.help is not None:
                         temp += f' `{command}` - {command.help}\n'
                     else:
                         temp += f'`{command}`\n'
-                embed.add_field(name=f'**{cog}**', value=temp, inline=True)
-            embed.add_field(name= "\0", value=footer, inline=False)
+                if temp != "":
+                    embed.add_field(name=f'**{cog}**', value=temp, inline=True)
+            embed.add_field(name= "Info", value=footer, inline=False)
         elif len(commands) == 1:
             # try to see if it is a cog name
             name = commands[0]
