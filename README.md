@@ -44,6 +44,8 @@ async def on_ready():
 
 ## Screenshots
 
+Here are some examples of what the help messages look like before and after.
+
 The default help message before:  
 ![before3](screenshots/before3.png)
 
@@ -53,7 +55,7 @@ Default help message after:
 The help message on a category before:  
 ![before2](screenshots/before2.png)
 
-And after:
+And after:  
 ![after2](screenshots/after2.png)
 
 The help command on a command before:  
