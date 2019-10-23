@@ -78,12 +78,12 @@ class Help(commands.Cog):
                     embed.add_field(name=f'**{command}**', value=f'{command.description}```{generate_usage(name)}```', inline=False)
                 else:
                     msg = ' '.join(commands)
-                    embed.add_field(name="Not found", value=f'Command `{msg}` not found.')
+                    embed.add_field(name="Not found", value=f'Command/category `{msg}` not found.')
         else:
             msg = ' '.join(commands)
-            embed.add_field(name="Not found", value=f'Command `{msg}` not found.')
+            embed.add_field(name="Not found", value=f'Command/category `{msg}` not found.')
         
-        await ctx.send(embed=embed)
+        await ctx.send(f'{ctx.author.mention}', embed=embed)
         return
 
 # Cog setup
