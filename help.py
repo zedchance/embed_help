@@ -4,9 +4,9 @@
 import discord
 from discord.ext import commands
 
-bot_title = ''
+bot_title = 'Bot title'
 bot_description = ''
-footer = ''
+bottom_info = ''
 
 class Help(commands.Cog):
     """ Help commands """
@@ -40,7 +40,6 @@ class Help(commands.Cog):
             # Parameters
             params = f' '
             for param in command.clean_params:
-                print(param)
                 params += f'<{command.clean_params[param]}> '
             temp += f'{params}'
             return temp
@@ -51,7 +50,6 @@ class Help(commands.Cog):
                 temp = ""
                 for command in bot.get_cog(cog).get_commands():
                     if command.hidden == True:
-                        print(command)
                         temp += ''
                     elif command.help is not None:
                         temp += f' `{command}` - {command.help}\n'
@@ -59,7 +57,8 @@ class Help(commands.Cog):
                         temp += f'`{command}`\n'
                 if temp != "":
                     embed.add_field(name=f'**{cog}**', value=temp, inline=True)
-            embed.add_field(name= "Info", value=footer, inline=False)
+            if bottom_info != "":
+                embed.add_field(name= "Info", value=bottom_info, inline=False)
         elif len(commands) == 1:
             # try to see if it is a cog name
             name = commands[0]
