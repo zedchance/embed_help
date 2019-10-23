@@ -6,7 +6,7 @@ from discord.ext import commands
 
 bot_title = ''
 bot_description = ''
-footer = 'Use `!blue help [command]` or `!blue help [category]` for more information'
+footer = ''
 
 class Help(commands.Cog):
     """ Help commands """
@@ -51,7 +51,7 @@ class Help(commands.Cog):
                 temp = ""
                 for command in bot.get_cog(cog).get_commands():
                     if command.help is not None:
-                        temp += f' `{command}` \0\0 {command.help}\n'
+                        temp += f' `{command}` - {command.help}\n'
                     else:
                         temp += f'`{command}`\n'
                 embed.add_field(name=f'**{cog}**', value=temp, inline=True)
@@ -66,12 +66,12 @@ class Help(commands.Cog):
                 msg = ""
                 for command in cog.get_commands():
                     if command.help is not None:
-                        msg += f' `{command}` \0\0 {command.help}\n'
+                        msg += f' `{command}`  {command.help}\n'
                     else:
                         msg += f'`{command}`\n'
                 embed.add_field(name=name, value=msg, inline=False)
                 msg = f'{cog.description}\n'
-                embed.add_field(name="\0", value=msg, inline=False)
+                embed.set_footer(text=msg)
             else:
                 command = bot.get_command(name)
                 if command is not None:
