@@ -44,3 +44,20 @@ async def on_ready():
 
 ## Screenshots
 
+The default help message before:  
+![before3](screenshots/before3.png)
+
+Default help message after:  
+![after3](screenshots/after3.png)
+
+The help message on a category before:  
+![before2](screenshots/before2.png)
+
+And after:
+![after2](screenshots/after2.png)
+
+The help command on a command before:  
+![before1](screenshots/before1.png)
+
+And after:  
+![after1](screenshots/after1.png)
