@@ -5,6 +5,7 @@ A rewritten help command for the [discord.py](https://discordpy.readthedocs.io/e
 * [Usage](#usage)
   * [How to use if your bot already has cogs](#how-to-use-if-your-bot-already-has-cogs)
   * [How to add to your bot if it doesn't have cogs](#how-to-add-to-your-bot-if-it-doesnt-have-cogs)
+  * [Settings](#settings)
 * [Screenshots](#screenshots)
 
 ## Usage
@@ -41,6 +42,18 @@ async def on_ready():
     for cog in cogs:
         bot.load_extension(cog)
 ```
+
+### Settings
+There are 4 fields you should fill out in the `help.py` file
+```py
+prefix = '!'
+bot_title = 'Bot title'
+bot_description = ''
+bottom_info = ''
+```
+At the very least you should fill out the `prefix` field (and probably the `bot_title`).
+`bot_description` adds text beneath the title and `bottom_info` adds a field at the end of the
+help command (useful instead of a footer because you can add markdown formatting).
 
 ## Screenshots
 
