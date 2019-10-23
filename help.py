@@ -58,7 +58,6 @@ class Help(commands.Cog):
             embed.add_field(name= "\0", value=footer, inline=False)
         elif len(commands) == 1:
             # try to see if it is a cog name
-            # name = _mention_pattern.sub(repl, commands[0])
             name = commands[0]
             command = None
             
@@ -78,39 +77,11 @@ class Help(commands.Cog):
                 if command is not None:
                     embed.add_field(name=f'**{command}**', value=f'{command.description}```{generate_usage(name)}```', inline=False)
                 else:
-                    msg = ""
-                    for com in commands:
-                        msg += f'{msg} '
+                    msg = ' '.join(commands)
                     embed.add_field(name="Not found", value=f'Command `{msg}` not found.')
-
-        # else:
-            # name = _mention_pattern.sub(repl, commands[0])
-            # command = bot.commands.get(name)
-            # if command is None:
-                # yield from bot.send_message(destination, bot.command_not_found.format(name))
-                # return
-
-            # for key in commands[1:]:
-            #     try:
-            #         key = _mention_pattern.sub(repl, key)
-            #         command = command.commands.get(key)
-            #         if command is None:
-            #             yield from bot.send_message(destination, bot.command_not_found.format(key))
-            #             return
-            #     except AttributeError:
-            #         yield from bot.send_message(destination, bot.command_has_no_subcommands.format(command, key))
-            #         return
-
-            # pages = bot.formatter.format_help_for(ctx, command)
-
-        # if bot.pm_help is None:
-        #     characters = sum(map(lambda l: len(l), pages))
-        #     # modify destination based on length of pages.
-        #     if characters > 1000:
-        #         destination = ctx.message.author
-
-        # for page in pages:
-        #     yield from bot.send_message(destination, page)
+        else:
+            msg = ' '.join(commands)
+            embed.add_field(name="Not found", value=f'Command `{msg}` not found.')
         
         await ctx.send(embed=embed)
         return
