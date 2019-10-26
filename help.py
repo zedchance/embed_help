@@ -79,7 +79,10 @@ class Help(commands.Cog):
             else:
                 command = bot.get_command(name)
                 if command is not None:
-                    embed.add_field(name=f'**{command}**', value=f'{command.description}```{generate_usage(name)}```\n{command.help}', inline=False)
+                    help = f''
+                    if command.help is not None:
+                        help = command.help
+                    embed.add_field(name=f'**{command}**', value=f'{command.description}```{generate_usage(name)}```\n{help}', inline=False)
                 else:
                     msg = ' '.join(commands)
                     embed.add_field(name="Not found", value=f'Command/category `{msg}` not found.')
