@@ -61,7 +61,7 @@ class Help(commands.Cog):
             if bottom_info != "":
                 embed.add_field(name= "Info", value=bottom_info, inline=False)
         elif len(commands) == 1:
-            # try to see if it is a cog name
+            # Try to see if it is a cog name
             name = commands[0]
             command = None
             
@@ -70,12 +70,13 @@ class Help(commands.Cog):
                 msg = ""
                 for command in cog.get_commands():
                     if command.help is not None:
-                        msg += f' `{command}`  {command.help}\n'
+                        msg += f' `{command}` - {command.help}\n'
                     else:
                         msg += f'`{command}`\n'
                 embed.add_field(name=name, value=msg, inline=False)
                 msg = f'{cog.description}\n'
                 embed.set_footer(text=msg)
+            # Must be a command then
             else:
                 command = bot.get_command(name)
                 if command is not None:
