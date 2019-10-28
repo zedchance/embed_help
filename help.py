@@ -45,17 +45,31 @@ class Help(commands.Cog):
             temp += f'{params}'
             return temp
 
+        def generate_command_list(cog):
+            """ Generates the command list with properly spaced help messages """
+            # Determine longest word
+            max = 0
+            for command in bot.get_cog(cog).get_commands():
+                if len(f'{command}') > max:
+                    max = len(f'{command}')
+            # Build list
+            temp = ""
+            for command in bot.get_cog(cog).get_commands():
+                if command.hidden == True:
+                    temp += ''
+                elif command.help is None:
+                    temp += f'{command}\n'
+                else:
+                    temp += f'`{command}`'
+                    for i in range(0, max - len(f'{command}') + 1):
+                        temp += '   '
+                    temp += f'{command.help}\n'
+            return temp
+
         # Help by itself just lists our own commands.
         if len(commands) == 0:
             for cog in bot.cogs:
-                temp = ""
-                for command in bot.get_cog(cog).get_commands():
-                    if command.hidden == True:
-                        temp += ''
-                    elif command.help is not None:
-                        temp += f' `{command}` - {command.help}\n'
-                    else:
-                        temp += f'`{command}`\n'
+                temp = generate_command_list(cog)
                 if temp != "":
                     embed.add_field(name=f'**{cog}**', value=temp, inline=True)
             if bottom_info != "":
@@ -67,15 +81,11 @@ class Help(commands.Cog):
             
             if name in bot.cogs:
                 cog = bot.get_cog(name)
-                msg = ""
-                for command in cog.get_commands():
-                    if command.help is not None:
-                        msg += f' `{command}` - {command.help}\n'
-                    else:
-                        msg += f'`{command}`\n'
+                msg = generate_command_list(name)
                 embed.add_field(name=name, value=msg, inline=False)
                 msg = f'{cog.description}\n'
                 embed.set_footer(text=msg)
+
             # Must be a command then
             else:
                 command = bot.get_command(name)
