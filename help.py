@@ -76,7 +76,7 @@ class Help(commands.Cog):
                 embed.add_field(name= "Info", value=bottom_info, inline=False)
         elif len(commands) == 1:
             # Try to see if it is a cog name
-            name = commands[0]
+            name = commands[0].capitalize()
             command = None
             
             if name in bot.cogs:
