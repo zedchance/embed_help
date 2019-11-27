@@ -22,9 +22,6 @@ class Help(commands.Cog):
         """ Shows this message """
         bot = ctx.bot
         embed = discord.Embed(title=bot_title, description=bot_description)
-
-        def repl(obj):
-            return _mentions_transforms.get(obj.group(0), '')
         
         def generate_usage(command_name):
             """ Generates a string of how to use a command """
@@ -50,12 +47,14 @@ class Help(commands.Cog):
             # Determine longest word
             max = 0
             for command in bot.get_cog(cog).get_commands():
-                if len(f'{command}') > max:
-                    max = len(f'{command}')
+                print(f'{command}')
+                if not command.hidden:
+                    if len(f'{command}') > max:
+                        max = len(f'{command}')
             # Build list
             temp = ""
             for command in bot.get_cog(cog).get_commands():
-                if command.hidden == True:
+                if command.hidden:
                     temp += ''
                 elif command.help is None:
                     temp += f'{command}\n'
@@ -71,7 +70,7 @@ class Help(commands.Cog):
             for cog in bot.cogs:
                 temp = generate_command_list(cog)
                 if temp != "":
-                    embed.add_field(name=f'**{cog}**', value=temp, inline=True)
+                    embed.add_field(name=f'**{cog}**', value=temp, inline=False)
             if bottom_info != "":
                 embed.add_field(name= "Info", value=bottom_info, inline=False)
         elif len(commands) == 1:
@@ -93,7 +92,9 @@ class Help(commands.Cog):
                     help = f''
                     if command.help is not None:
                         help = command.help
-                    embed.add_field(name=f'**{command}**', value=f'{command.description}```{generate_usage(name)}```\n{help}', inline=False)
+                    embed.add_field(name=f'**{command}**',
+                                    value=f'{command.description}```{generate_usage(name)}```\n{help}',
+                                    inline=False)
                 else:
                     msg = ' '.join(commands)
                     embed.add_field(name="Not found", value=f'Command/category `{msg}` not found.')
