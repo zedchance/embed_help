@@ -47,7 +47,6 @@ class Help(commands.Cog):
             # Determine longest word
             max = 0
             for command in bot.get_cog(cog).get_commands():
-                print(f'{command}')
                 if not command.hidden:
                     if len(f'{command}') > max:
                         max = len(f'{command}')
